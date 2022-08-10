@@ -1,0 +1,39 @@
+{% extends 'second_app/base.html' %}
+
+{% block title %}
+    Blog
+{% endblock %}
+    
+
+{% block content  %}
+
+    <div id="colorlib-main">
+      <section class="colorlib-blog" data-section="blog">
+        <div class="colorlib-narrow-content">
+          <div class="row">
+            {% if blog_list  %}
+            {% for post in blog_list %}
+            <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+              <div class="blog-entry">
+                <a href="{% url 'second_app:blog_detail' post.slug %}" class="blog-img"><img src="{{ post.image.url }} " class="img-responsive" alt=""></a>
+                <div class="desc">
+                  <span><small>{{ post.created_on }}</small></small> | <small> {{post.user}} </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
+                  <h3><a href="{% url 'second_app:blog_detail' post.slug %}">{{ post.title}}</a></h3>
+                  <p>{{ post.content|truncatewords:30|safe}}</p>
+                  <a href="{% url 'second_app:blog_detail' post.slug %}"><button class="btn btn-primary">Read More</button></a>
+                
+                </div>
+              </div>
+              
+            </div>
+            {% endfor  %}
+            {% endif %}
+          </div>
+         
+        </div>
+      </section>
+    </div>
+
+       
+{% endblock  %}
+

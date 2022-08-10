@@ -1,0 +1,19 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+  Change Password
+{% endblock %}
+    
+
+{% block content  %}
+{% if messages  %}
+{% for message in messages  %}
+<div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{% endif %}
+<form method="POST"enctype="multipart/form-data">
+  {{ pass_key.as_p }}
+  {% csrf_token  %}
+  <button type="submit" value ="Change Password" class="btn btn-outline-primary" style="width: 50%; ">Change Password</button>
+</form>
+{% endblock %}

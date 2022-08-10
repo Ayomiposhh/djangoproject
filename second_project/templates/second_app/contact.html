@@ -1,0 +1,16 @@
+{% extends 'second_app/base.html' %}
+
+{% block title %}
+    Contact
+{% endblock %}
+    
+
+{% block content  %}
+  <form action="" method="POST">
+   
+    {% csrf_token %}
+    {{cform.as_p}}
+    
+    <button type="submit" value ="Send Message" class="btn btn-outline-primary" style="width: 60%;">Send Message</button><br/>
+  </form>
+{% endblock %}

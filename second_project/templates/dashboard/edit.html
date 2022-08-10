@@ -1,0 +1,20 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+    edit
+{% endblock %}
+    
+
+{% block content  %}
+{% if messages  %}
+{% for message in messages  %}
+<div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{% endif %}
+<form method="POST"enctype="multipart/form-data">
+  {{ edit_key.as_p }}
+  {{ up.as_p }}
+  {% csrf_token  %}
+  <button type="submit" value ="Edit" class="btn btn-outline-primary" style="width: 50%; ">Edit</button>
+</form>
+{% endblock %}

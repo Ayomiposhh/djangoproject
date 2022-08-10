@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+    Add Blog
+{% endblock %}
+    
+
+{% block content  %}
+ <h1>
+  {% if not form.instance.pk %}
+  Add Blog
+  {% else %}
+  Edit Blog
+  {% endif %}
+</h1>
+{% if messages  %}
+{% for message in messages  %}
+<div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{% endif %}
+<div>
+<form method="POST"enctype="multipart/form-data" >
+  {{ form.as_p }}
+  {% csrf_token  %}
+{% if not form.instance.pk %}
+<button type="submit" value ="Add Blog" class="btn btn-outline-primary" style="width: 50%; ">Add Blog</button>
+{% else %}
+<button type="submit" value ="Edit Blog" class="btn btn-outline-primary" style="width: 50%; ">Edit Blog</button>
+{% endif  %}
+</form>
+</div>
+{% endblock  %}
