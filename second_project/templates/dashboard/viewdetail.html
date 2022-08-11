@@ -20,7 +20,7 @@
                   <span><small style="color: black; font-size: 15px;">{{ vd.created_on }}</small></small> | <small> {{blog_detail.user}} </small> | <small> <i class="icon-bubble3"></i> 4</small></span>
                   <h3>{{ vd.title}}</h3>
                   <p>{{ vd.content|safe}}</p>
-                
+                <button class="btn btn-outline-primary"><a href="{% url 'second_app:view_blog' %}">Back To View Blog</a></button>
                 </div>
               </div>
               

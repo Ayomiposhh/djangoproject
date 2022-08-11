@@ -27,13 +27,13 @@
   <td>{{ v.created_on  }}</td>
  
    <td>
-      <a href="{% url 'second_app:edit_blog_form' v.id %}">Edit</a>
+     <button class="btn btn-outline-primary"><a href="{% url 'second_app:edit_blog_form' v.id %}">Edit</a></button>
   </td>
   <td>
-      <a href="{% url 'second_app:view_detail' v.id %}">View</a>
+      <button class="btn btn-outline-primary"><a href="{% url 'second_app:view_detail' v.id %}">View</a></button>
   </td>
   <td>
-      <a href="{% url 'second_app:delete' v.id %}">Delete</a>
+   <button class="btn btn-outline-primary"><a href="{% url 'second_app:delete' v.id %}">Delete</a></button>
   </td>
 </tr>
 
