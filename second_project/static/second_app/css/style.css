@@ -1000,7 +1000,7 @@ body.offcanvas {
       -webkit-transform: translate3d(0, 15px, 0);
       transform: translate3d(0, 15px, 0); }
       .project .desc span a {
-        color: #000; }
+        color: #fff; }
     @media screen and (max-width: 768px) {
       .project .desc {
         opacity: 1;
@@ -1437,4 +1437,8 @@ body.offcanvas {
     color: black;
   }
 
-  
+  @media only screen and (min-width:320px) and (max-width:900px){
+    .desc h1{
+      color: white;
+    }
+  }

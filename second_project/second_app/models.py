@@ -1,6 +1,6 @@
 from email import message
 from pickle import TRUE
-from turtle import title
+from turtle import color, title
 from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
@@ -103,4 +103,22 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.name)
+  
+  
+class Work(models.Model):
+  name =models.CharField(max_length= 200,null=True,blank=True)
+  image = models.ImageField(blank=True, null=True)
+  link =models.URLField(max_length= 100,null=True,blank=True)
+  
+  def __str__(self): 
+    return self.name
+  
+  
+class Skill(models.Model):
+  skill_name = models.CharField(max_length= 500,verbose_name='Skill Name',null=True)
+  skill_grade = models.IntegerField(null=True)
+  skill_color = models.CharField(max_length= 500)
+
+  def __str__(self): 
+    return self.skill_color
   

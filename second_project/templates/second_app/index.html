@@ -12,6 +12,7 @@ Home
 			<section id="colorlib-hero" class="js-fullheight" data-section="home">
 				<div class="flexslider js-fullheight">
 					<ul class="slides">
+						
 				   	<li style="background-image: url({% static 'second_app/images/posh3.jpeg' %});" class="">
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
@@ -27,6 +28,7 @@ Home
 					   		</div>
 				   		</div>
 				   	</li>
+					
 				   	<li style="background-image: url({% static 'second_app/images/posh2.jpeg' %});" class="img-fluid">
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
@@ -91,7 +93,7 @@ Home
 								<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 									<div class="hire">
 										<h2>I am happy to know you <br>that 4+ projects done sucessfully!</h2>
-										<a href="{% url 'second_app:home' %}#contacts" class="btn-hire">Hire me</a>
+										<a href="{% url 'home' %}#contacts" class="btn-hire">Hire me</a>
 									</div>
 								</div>
 							</div>
@@ -191,75 +193,25 @@ Home
 						</div>
 					</div>
 					<div class="row">
+						
 						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem consequatur placeat voluptas optio, ratione aperiam debitis praesentium ducimus non architecto delectus impedit quos tempore, soluta reprehenderit et saepe! Unde cupiditate repellat, quasi nobis sequi sunt porro corrupti fuga omnis ipsum exercitationem, nulla iure similique, a quaerat ullam assumenda id possimus?</p>
 						</div>
+						{% if skl %}
+						{% for s in skl %}
 						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
 							<div class="progress-wrap">
-								<h3>HTML5</h3>
+								<h3>{{s.skill_name}}</h3>
 								<div class="progress">
-								 	<div class="progress-bar color-1" role="progressbar" aria-valuenow="85"
-								  	aria-valuemin="0" aria-valuemax="100" style="width:85%">
-								    <span>85%</span>
+								 	<div class="progress-bar color-1" role="progressbar" aria-valuenow="{{s.skill_grade}}"
+								  	aria-valuemin="0" aria-valuemax="100" style="width:{{s.skill_grade}}%; background-color:{{s.skill_color}};">
+								    <span style="color: {{s.skill_color}};">{{s.skill_grade}}%</span>
 								  	</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="progress-wrap">
-								<h3>CSS3</h3>
-								<div class="progress">
-								 	<div class="progress-bar color-2" role="progressbar" aria-valuenow="80"
-								  	aria-valuemin="0" aria-valuemax="100" style="width:80%">
-								    <span>80%</span>
-								  	</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="progress-wrap">
-								<h3>BOOTSTRAP</h3>
-								<div class="progress">
-								 	<div class="progress-bar color-3" role="progressbar" aria-valuenow="100"
-								  	aria-valuemin="0" aria-valuemax="100" style="width:100%">
-								    <span>100%</span>
-								  	</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="progress-wrap">
-								<h3>JAVASCRIPT</h3>
-								<div class="progress">
-								 	<div class="progress-bar color-4" role="progressbar" aria-valuenow="50"
-								  	aria-valuemin="0" aria-valuemax="100" style="width:50%">
-								    <span>50%</span>
-								  	</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="progress-wrap">
-								<h3>PYTHON</h3>
-								<div class="progress">
-								 	<div class="progress-bar color-5" role="progressbar" aria-valuenow="70"
-								  	aria-valuemin="0" aria-valuemax="100" style="width:70%">
-								    <span>70%</span>
-								  	</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="progress-wrap">
-								<h3>DJANGO</h3>
-								<div class="progress">
-								 	<div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-								  	aria-valuemin="0" aria-valuemax="100" style="width:80%">
-								    <span>80%</span>
-								  	</div>
-								</div>
-							</div>
-						</div>
+					  {% endfor %}
+						{% endif %}
 					</div>
 				</div>
 			</section>
@@ -289,7 +241,7 @@ Home
 									         <div class="panel-body">
 									            <div class="row">
 										      		<div class="col-md-6">
-										      			<p><strong>SCHOOL NAME</strong>:{{e.name}} </p>
+										      	<p><strong>SCHOOL NAME</strong>:{{e.name}} </p>
 														<p><strong>COURSE</strong>:{{e.course}} </p>
 														<p><strong>YEAR OF EDUCATION</strong>:{{e.year}} </p>
 															
@@ -362,12 +314,14 @@ Home
 						</div>
 					</div>
 					<div class="row">
+						{% if wrk %}
+						{% for k in wrk %}
 						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style="background-image: url({% static 'second_app/images/one1.png' %});">
+							<div class="project" style="background-image: url({{k.image.url}});">
 								<div class="desc">
 									<div class="con">
-										<h3><a href="work.html">Work 01</a></h3>
-										<span>javascript</span>
+										<h3><a href="work.html">{{k.name}}</a></h3>
+										<span class="text-white"><a href="{{k.link}}">click to view work</a></span>
 										<p class="icon">
 											<span><a href="#"><i class="icon-share3"></i></a></span>
 											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
@@ -376,53 +330,10 @@ Home
 									</div>
 								</div>
 							</div>
+					    
 						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style="background-image: url({% static 'second_app/images/two2.png' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 02</a></h3>
-										<span>Bootstrap</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-							<div class="project" style="background-image: url({% static 'second_app/images/three3.png' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 03</a></h3>
-										<span>Css</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-							<div class="project" style="background-image: url({% static 'second_app/images/four4.png' %});">
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 04</a></h3>
-										<span>React</span>
-										<p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					
+						{% endfor %}
+						{% endif %}
 					</div>
 					<!-- <div class="row">
 						<div class="col-md-12 animate-box">
@@ -507,7 +418,7 @@ Home
 						<div class="col-md-7 col-md-push-1">
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 col-md-pull-1" data-animate-effect="fadeInRight">
-									<form action="{% url 'second_app:home'%}#contact" method="post">
+									<form action="{% url 'home'%}#contact" method="post">
 										<div class="form-group" id="contact">
 											{{cform.as_p}}
 											{% csrf_token %}

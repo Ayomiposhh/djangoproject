@@ -35,13 +35,15 @@ def home(request):
   blog = Post.objects.filter(status=1).order_by('-created_on')[:3]
   edu = Education.objects.all()
   exp = Experience.objects.all()
+  wrk = Work.objects.all()
+  skl = Skill.objects.all()
   if request.method =='POST':
     contact_form = ContactForm(request.POST)
     if contact_form.is_valid():
       contact_form.save()   
   else:
     contact_form = ContactForm()
-  return render(request,'second_app/index.html',{'blog':blog, 'cform':contact_form, 'edu': edu, 'exp' : exp})
+  return render(request,'second_app/index.html',{'blog':blog, 'cform':contact_form, 'edu': edu, 'exp' : exp, 'wrk':wrk,'skl': skl})
 
 
 def register(request):
@@ -55,11 +57,13 @@ def register(request):
       user.userprofile.email = register_form.cleaned_data.get('email')
       user.userprofile.phone = register_form.cleaned_data.get('phone')
       register_form.save()
-      return redirect('second_app:login')
+      messages.success(request,'You have been registered')
+    # return redirect('second_app:login')
     
   else:
-   register_form=RegForm()
-   return render(request,'second_app/register.html',{'reg': register_form})
+       register_form=RegForm()
+       messages.error(request,'Password must contain lowercases and character')
+  return render(request,'second_app/register.html',{'reg': register_form})
   
   
 def edit(request):
