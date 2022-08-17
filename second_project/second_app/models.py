@@ -122,3 +122,13 @@ class Skill(models.Model):
   def __str__(self): 
     return self.skill_color
   
+  
+class About(models.Model):
+   topic=models.CharField(max_length= 200,null=True,blank=True)
+   name =HTMLField(null=True,blank=True)
+   skill =models.CharField(max_length= 200,null=True,blank=True)
+   content =models.CharField(max_length= 200,null=True,blank=True)
+   
+   
+   def __str__(self): 
+    return self.name

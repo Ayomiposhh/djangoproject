@@ -21,18 +21,28 @@
 <body class="form-v7">
 		<div class="page-content">
 				<div class="form-v7-content">
-			<div class="form-left">
+			<div class="form-center">
 				
-				<img src="{% static 'second_app/images/posh2.jpeg' %}" height="600px" alt="form">
-				<p class="text-1 text-capitalize">Sign Up</p>
+				<!-- <img src="{% static 'second_app/images/reg (1).jpg' %}" height="600px" alt="form"> -->
+				<!-- <p class="text-1 text-capitalize">Sign Up</p> -->
 				
 			</div>
+			
 			<form class="form-detail" action="#" method="post" >
 				{% if messages %}
 				{% for m in messages%}
-					<div class="alert {{m.tags}}">{{ m }}</div>
+					<div class="alert alert-danger">{{ m }}</div>
 				{% endfor %}
 			{% endif %}
+			{% if reg.errors %}
+       {% for field in reg %}
+           {% for error in field.errors %} 
+              <div class="alert alert-danger">
+                   <strong style="color:red ;">{{ error|escape }}</strong>
+              </div>
+           {% endfor %}
+       {% endfor %}
+    {% endif %}
 				{% csrf_token %}
 				{{reg.as_p}}
 				<div class="form-row-last">

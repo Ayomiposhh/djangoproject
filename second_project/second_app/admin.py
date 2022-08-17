@@ -31,6 +31,7 @@ admin.site.register(Education)
 admin.site.register(Experience)
 admin.site.register(Work)
 admin.site.register(Skill)
+admin.site.register(About)
 
 
 admin.site.site_header='Ayomiposhh'

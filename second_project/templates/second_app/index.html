@@ -13,7 +13,7 @@ Home
 				<div class="flexslider js-fullheight">
 					<ul class="slides">
 						
-				   	<li style="background-image: url({% static 'second_app/images/posh3.jpeg' %});" class="">
+				   	<li style="background-image: url({% static 'second_app/images/leo1.jpg' %});" class="">
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
 				   			<div class="row">
@@ -29,7 +29,7 @@ Home
 				   		</div>
 				   	</li>
 					
-				   	<li style="background-image: url({% static 'second_app/images/posh2.jpeg' %});" class="img-fluid">
+				   	<li style="background-image: url({% static 'second_app/images/leo2.jpg' %});" class="img-fluid">
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
 				   			<div class="row">
@@ -58,8 +58,11 @@ Home
 									<div class="about-desc">
 										<span class="heading-meta">About Us</span>
 										<h2 class="colorlib-heading">Who Am I?</h2>
-										<p><strong>Hi I'm Ayomiposi joy</strong> On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
-										<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+										{% if abt %}
+										{% for a in abt %}
+										{{a.name|safe}}
+										{% endfor %}
+										{% endif %}
 									</div>
 								</div>
 							</div>

@@ -104,15 +104,6 @@ class PasswordChangeForm(PasswordChangeForm):
 
       
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.password1 = self.cleaned_data['password1']
-        user.password2 = self.cleaned_data['password2']
-        
-        if commit:
-            user.save()
-            return user       
-        
         
 class UserForm(forms.ModelForm):
     number = forms.CharField(required=False, widget=forms.TextInput(

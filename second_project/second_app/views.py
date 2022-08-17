@@ -37,13 +37,14 @@ def home(request):
   exp = Experience.objects.all()
   wrk = Work.objects.all()
   skl = Skill.objects.all()
+  abt = About.objects.all()
   if request.method =='POST':
     contact_form = ContactForm(request.POST)
     if contact_form.is_valid():
       contact_form.save()   
   else:
     contact_form = ContactForm()
-  return render(request,'second_app/index.html',{'blog':blog, 'cform':contact_form, 'edu': edu, 'exp' : exp, 'wrk':wrk,'skl': skl})
+  return render(request,'second_app/index.html',{'blog':blog, 'cform':contact_form, 'edu': edu, 'exp' : exp, 'wrk':wrk,'skl': skl ,'abt' :abt })
 
 
 def register(request):
@@ -62,7 +63,6 @@ def register(request):
     
   else:
        register_form=RegForm()
-       messages.error(request,'Password must contain lowercases and character')
   return render(request,'second_app/register.html',{'reg': register_form})
   
   
